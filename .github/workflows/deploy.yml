@@ -1,0 +1,67 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the workflow to publish to GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one concurrent deployment; cancel in-progress runs on new pushes.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        # The site serves from the root of the custom domain (spec.deebuilt.co),
+        # so the base path is "/". The CNAME file in public/ pins the domain on
+        # every deploy. If the custom domain is ever removed, change this back to
+        # "/medical-provider/" so assets resolve under the repo path.
+        env:
+          VITE_BASE: /
+        run: npm run build
+
+      - name: Add SPA fallback and disable Jekyll
+        # GitHub Pages serves 404.html for unknown paths. Copying index.html
+        # to 404.html lets the client-side router handle deep links and
+        # refreshes (e.g. /medical-provider/site1). .nojekyll stops Pages from
+        # ignoring files/folders that start with an underscore.
+        run: |
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
