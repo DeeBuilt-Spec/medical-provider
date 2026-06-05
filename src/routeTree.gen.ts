@@ -9,11 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Site5RouteImport } from './routes/site5'
+import { Route as Site4RouteImport } from './routes/site4'
 import { Route as Site3RouteImport } from './routes/site3'
 import { Route as Site2RouteImport } from './routes/site2'
 import { Route as Site1RouteImport } from './routes/site1'
 import { Route as IndexRouteImport } from './routes/index'
 
+const Site5Route = Site5RouteImport.update({
+  id: '/site5',
+  path: '/site5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Site4Route = Site4RouteImport.update({
+  id: '/site4',
+  path: '/site4',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Site3Route = Site3RouteImport.update({
   id: '/site3',
   path: '/site3',
@@ -40,12 +52,16 @@ export interface FileRoutesByFullPath {
   '/site1': typeof Site1Route
   '/site2': typeof Site2Route
   '/site3': typeof Site3Route
+  '/site4': typeof Site4Route
+  '/site5': typeof Site5Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/site1': typeof Site1Route
   '/site2': typeof Site2Route
   '/site3': typeof Site3Route
+  '/site4': typeof Site4Route
+  '/site5': typeof Site5Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +69,15 @@ export interface FileRoutesById {
   '/site1': typeof Site1Route
   '/site2': typeof Site2Route
   '/site3': typeof Site3Route
+  '/site4': typeof Site4Route
+  '/site5': typeof Site5Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/site1' | '/site2' | '/site3'
+  fullPaths: '/' | '/site1' | '/site2' | '/site3' | '/site4' | '/site5'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/site1' | '/site2' | '/site3'
-  id: '__root__' | '/' | '/site1' | '/site2' | '/site3'
+  to: '/' | '/site1' | '/site2' | '/site3' | '/site4' | '/site5'
+  id: '__root__' | '/' | '/site1' | '/site2' | '/site3' | '/site4' | '/site5'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +85,26 @@ export interface RootRouteChildren {
   Site1Route: typeof Site1Route
   Site2Route: typeof Site2Route
   Site3Route: typeof Site3Route
+  Site4Route: typeof Site4Route
+  Site5Route: typeof Site5Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/site5': {
+      id: '/site5'
+      path: '/site5'
+      fullPath: '/site5'
+      preLoaderRoute: typeof Site5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site4': {
+      id: '/site4'
+      path: '/site4'
+      fullPath: '/site4'
+      preLoaderRoute: typeof Site4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/site3': {
       id: '/site3'
       path: '/site3'
@@ -107,6 +141,8 @@ const rootRouteChildren: RootRouteChildren = {
   Site1Route: Site1Route,
   Site2Route: Site2Route,
   Site3Route: Site3Route,
+  Site4Route: Site4Route,
+  Site5Route: Site5Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

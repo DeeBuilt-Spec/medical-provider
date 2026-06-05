@@ -14,6 +14,8 @@ const sites = [
   { to: "/site1", label: "Site 01", name: "Serif editorial focus", note: "Full-bleed parallax · centered serif wordmark" },
   { to: "/site2", label: "Site 02", name: "Editorial split", note: "Oversized headline · tall portrait image · sage accent" },
   { to: "/site3", label: "Site 03", name: "Asymmetric editorial", note: "Off-grid composition · navy accent · mono details" },
+  { to: "/site4", label: "Site 04", name: "Warm neighborhood", note: "Inviting centered hero · soft sage · Lora serif" },
+  { to: "/site5", label: "Site 05", name: "Friendly family practice", note: "Approachable split layout · soft teal accent" },
 ] as const;
 
 function Index() {
