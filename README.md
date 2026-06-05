@@ -9,9 +9,7 @@ browser — no setup required.
 
 Open the deployed site and click through each direction from the landing page:
 
-**https://deebuilt.github.io/medical-provider/**
-
-> A custom subdomain will be attached for the client-facing review link.
+**https://spec.deebuilt.co/medical-provider/**
 
 The landing page lists all five directions. Each one opens a full homepage
 mockup in a distinct visual style:
@@ -69,9 +67,13 @@ npm run preview  # preview the production build
 
 Pushing to `main` triggers the
 [GitHub Pages workflow](.github/workflows/deploy.yml), which builds the static
-site and publishes it. The site is served under the repository path
-(`/medical-provider/`); when a custom domain is attached, it serves at the
-domain root.
+site (with base path `/medical-provider/`) and publishes it to GitHub Pages.
+
+This project is one of several served under the shared `spec.deebuilt.co`
+subdomain. The domain itself is owned by the `deebuilt-spec.github.io` root
+repo (which holds the `CNAME` and a landing page); each project repo serves at
+its own route — this one at `/medical-provider/`. Project repos must **not**
+carry a `CNAME` file.
 
 ---
 
