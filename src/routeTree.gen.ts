@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Site3RouteImport } from './routes/site3'
+import { Route as Site2RouteImport } from './routes/site2'
+import { Route as Site1RouteImport } from './routes/site1'
 import { Route as IndexRouteImport } from './routes/index'
 
+const Site3Route = Site3RouteImport.update({
+  id: '/site3',
+  path: '/site3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Site2Route = Site2RouteImport.update({
+  id: '/site2',
+  path: '/site2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Site1Route = Site1RouteImport.update({
+  id: '/site1',
+  path: '/site1',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/site1': typeof Site1Route
+  '/site2': typeof Site2Route
+  '/site3': typeof Site3Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/site1': typeof Site1Route
+  '/site2': typeof Site2Route
+  '/site3': typeof Site3Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/site1': typeof Site1Route
+  '/site2': typeof Site2Route
+  '/site3': typeof Site3Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/site1' | '/site2' | '/site3'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/site1' | '/site2' | '/site3'
+  id: '__root__' | '/' | '/site1' | '/site2' | '/site3'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  Site1Route: typeof Site1Route
+  Site2Route: typeof Site2Route
+  Site3Route: typeof Site3Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/site3': {
+      id: '/site3'
+      path: '/site3'
+      fullPath: '/site3'
+      preLoaderRoute: typeof Site3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site2': {
+      id: '/site2'
+      path: '/site2'
+      fullPath: '/site2'
+      preLoaderRoute: typeof Site2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site1': {
+      id: '/site1'
+      path: '/site1'
+      fullPath: '/site1'
+      preLoaderRoute: typeof Site1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +104,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  Site1Route: Site1Route,
+  Site2Route: Site2Route,
+  Site3Route: Site3Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
