@@ -19,31 +19,27 @@ export function SpecSwitcher() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-  const fullPath = (to: string) => `${base}${to}`;
-  const homePath = base === "" ? "/" : base;
-
-  // Are we on the landing page? If so, render nothing.
-  const onHome = pathname === homePath || pathname === `${homePath}/` || pathname === "/";
-
-  // Find the current direction by longest matching prefix, so child pages of a
-  // multi-page site (e.g. /site6-real/booking) still resolve to their parent.
-  //
-  // Trailing slashes are normalized on both sides: GitHub Pages can serve the
-  // deployed URL with a trailing slash (/medical-provider/site1/) while the
-  // route path has none, which previously broke detection on the live site and
-  // grayed out the prev/next arrows. Compare slash-trimmed segments instead.
-  const stripSlash = (p: string) => (p.length > 1 ? p.replace(/\/+$/, "") : p);
-  const here = stripSlash(pathname);
+  // Detection is matched on the ROUTE SEGMENT only (e.g. "/site1",
+  // "/site6-real"), independent of the base path (/medical-provider/), trailing
+  // slashes, or host. Earlier base-prefix matching was fragile on the deployed
+  // phone view — the pathname didn't line up with BASE_URL the way expected, so
+  // detection failed and the arrows grayed out. Here we just ask: does the URL
+  // path contain this spec's segment? The segments are unique, so this is
+  // robust everywhere. Longest match wins so child pages resolve to their site.
+  const here = `/${pathname.replace(/^\/+|\/+$/g, "")}/`; // normalize: /a/b/ form
   let currentIndex = -1;
   let bestLen = -1;
   allSpecs.forEach((s, i) => {
-    const full = stripSlash(fullPath(s.to));
-    if ((here === full || here.startsWith(`${full}/`)) && full.length > bestLen) {
-      bestLen = full.length;
+    const seg = `${s.to}/`; // e.g. "/site1/"
+    if (here.includes(seg) && s.to.length > bestLen) {
+      bestLen = s.to.length;
       currentIndex = i;
     }
   });
+
+  // The switcher only makes sense on a spec page. If no spec segment matched
+  // (the landing page, a 404, etc.), hide it entirely.
+  const noSpec = currentIndex === -1;
 
   // Close dropdown on outside click or Escape.
   useEffect(() => {
@@ -66,7 +62,7 @@ export function SpecSwitcher() {
   // Close the dropdown whenever the route changes.
   useEffect(() => { setOpen(false); }, [pathname]);
 
-  if (onHome) return null;
+  if (noSpec) return null;
 
   const current = currentIndex >= 0 ? allSpecs[currentIndex] : null;
   const prev = currentIndex > 0 ? allSpecs[currentIndex - 1] : null;
