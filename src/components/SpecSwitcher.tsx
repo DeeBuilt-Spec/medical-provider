@@ -41,14 +41,17 @@ export function SpecSwitcher() {
   // Close dropdown on outside click or Escape.
   useEffect(() => {
     if (!open) return;
-    const onDown = (e: MouseEvent) => {
+    const onDown = (e: MouseEvent | TouchEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    // Listen for touchstart too, so tapping outside closes the panel on mobile.
     document.addEventListener("mousedown", onDown);
+    document.addEventListener("touchstart", onDown);
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("touchstart", onDown);
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
@@ -68,12 +71,17 @@ export function SpecSwitcher() {
   const hair = "rgba(26,28,25,0.14)";
   const sans = "ui-sans-serif, system-ui, -apple-system, sans-serif";
 
+  // Arrows are <button>s (not <Link>s) so taps fire reliably on real
+  // touchscreens — the same control type as the dropdown toggle, which works on
+  // mobile. 44px target meets the touch minimum; touchAction avoids tap delay.
   const arrow: React.CSSProperties = {
     display: "inline-flex", alignItems: "center", justifyContent: "center",
-    width: 34, height: 34, borderRadius: 999, textDecoration: "none",
-    color: ink, fontSize: 16, lineHeight: 1, flexShrink: 0,
+    width: 44, height: 44, borderRadius: 999, textDecoration: "none",
+    color: ink, fontSize: 22, lineHeight: 1, flexShrink: 0,
+    background: "transparent", border: "none", padding: 0, cursor: "pointer",
+    fontFamily: sans, touchAction: "manipulation", WebkitTapHighlightColor: "transparent",
   };
-  const arrowDisabled: React.CSSProperties = { ...arrow, color: "rgba(26,28,25,0.22)", pointerEvents: "none" };
+  const arrowDisabled: React.CSSProperties = { ...arrow, color: "rgba(26,28,25,0.22)", cursor: "default", pointerEvents: "none" };
 
   return (
     <div
@@ -143,7 +151,7 @@ export function SpecSwitcher() {
         }}
       >
         {prev ? (
-          <Link to={prev.to} style={arrow} aria-label={`Previous: ${prev.name}`} title={prev.name}>‹</Link>
+          <button type="button" onClick={() => navigate({ to: prev.to })} style={arrow} aria-label={`Previous: ${prev.name}`} title={prev.name}>‹</button>
         ) : (
           <span style={arrowDisabled} aria-hidden>‹</span>
         )}
@@ -166,7 +174,7 @@ export function SpecSwitcher() {
         </button>
 
         {next ? (
-          <Link to={next.to} style={arrow} aria-label={`Next: ${next.name}`} title={next.name}>›</Link>
+          <button type="button" onClick={() => navigate({ to: next.to })} style={arrow} aria-label={`Next: ${next.name}`} title={next.name}>›</button>
         ) : (
           <span style={arrowDisabled} aria-hidden>›</span>
         )}
