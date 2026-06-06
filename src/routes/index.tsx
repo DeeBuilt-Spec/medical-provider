@@ -16,6 +16,7 @@ const sites = [
   { to: "/site3", label: "Site 03", name: "Asymmetric editorial", note: "Off-grid composition · navy accent · mono details" },
   { to: "/site4", label: "Site 04", name: "Warm neighborhood", note: "Inviting centered hero · soft sage · Lora serif" },
   { to: "/site5", label: "Site 05", name: "Friendly family practice", note: "Approachable split layout · soft teal accent" },
+  { to: "/site6", label: "Site 06", name: "Modern clinical & trustworthy", note: "Geometric sans · rounded cards · teal + coral · trust signals" },
 ] as const;
 
 function Index() {
