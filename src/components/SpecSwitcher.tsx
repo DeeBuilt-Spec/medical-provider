@@ -28,11 +28,18 @@ export function SpecSwitcher() {
 
   // Find the current direction by longest matching prefix, so child pages of a
   // multi-page site (e.g. /site6-real/booking) still resolve to their parent.
+  //
+  // Trailing slashes are normalized on both sides: GitHub Pages can serve the
+  // deployed URL with a trailing slash (/medical-provider/site1/) while the
+  // route path has none, which previously broke detection on the live site and
+  // grayed out the prev/next arrows. Compare slash-trimmed segments instead.
+  const stripSlash = (p: string) => (p.length > 1 ? p.replace(/\/+$/, "") : p);
+  const here = stripSlash(pathname);
   let currentIndex = -1;
   let bestLen = -1;
   allSpecs.forEach((s, i) => {
-    const full = fullPath(s.to);
-    if ((pathname === full || pathname.startsWith(`${full}/`)) && full.length > bestLen) {
+    const full = stripSlash(fullPath(s.to));
+    if ((here === full || here.startsWith(`${full}/`)) && full.length > bestLen) {
       bestLen = full.length;
       currentIndex = i;
     }
