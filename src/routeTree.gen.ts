@@ -10,22 +10,42 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Site7RouteImport } from './routes/site7'
+import { Route as Site6RealRouteImport } from './routes/site6-real'
 import { Route as Site6RouteImport } from './routes/site6'
+import { Route as Site5RealRouteImport } from './routes/site5-real'
 import { Route as Site5RouteImport } from './routes/site5'
 import { Route as Site4RouteImport } from './routes/site4'
 import { Route as Site3RouteImport } from './routes/site3'
 import { Route as Site2RouteImport } from './routes/site2'
 import { Route as Site1RouteImport } from './routes/site1'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Site6RealIndexRouteImport } from './routes/site6-real.index'
+import { Route as Site5RealIndexRouteImport } from './routes/site5-real.index'
+import { Route as Site6RealServicesRouteImport } from './routes/site6-real.services'
+import { Route as Site6RealBookingRouteImport } from './routes/site6-real.booking'
+import { Route as Site6RealAboutRouteImport } from './routes/site6-real.about'
+import { Route as Site5RealServicesRouteImport } from './routes/site5-real.services'
+import { Route as Site5RealBookingRouteImport } from './routes/site5-real.booking'
+import { Route as Site5RealAboutRouteImport } from './routes/site5-real.about'
 
 const Site7Route = Site7RouteImport.update({
   id: '/site7',
   path: '/site7',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Site6RealRoute = Site6RealRouteImport.update({
+  id: '/site6-real',
+  path: '/site6-real',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Site6Route = Site6RouteImport.update({
   id: '/site6',
   path: '/site6',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Site5RealRoute = Site5RealRouteImport.update({
+  id: '/site5-real',
+  path: '/site5-real',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Site5Route = Site5RouteImport.update({
@@ -58,6 +78,46 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Site6RealIndexRoute = Site6RealIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Site6RealRoute,
+} as any)
+const Site5RealIndexRoute = Site5RealIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Site5RealRoute,
+} as any)
+const Site6RealServicesRoute = Site6RealServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => Site6RealRoute,
+} as any)
+const Site6RealBookingRoute = Site6RealBookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => Site6RealRoute,
+} as any)
+const Site6RealAboutRoute = Site6RealAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => Site6RealRoute,
+} as any)
+const Site5RealServicesRoute = Site5RealServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => Site5RealRoute,
+} as any)
+const Site5RealBookingRoute = Site5RealBookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => Site5RealRoute,
+} as any)
+const Site5RealAboutRoute = Site5RealAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => Site5RealRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,8 +126,18 @@ export interface FileRoutesByFullPath {
   '/site3': typeof Site3Route
   '/site4': typeof Site4Route
   '/site5': typeof Site5Route
+  '/site5-real': typeof Site5RealRouteWithChildren
   '/site6': typeof Site6Route
+  '/site6-real': typeof Site6RealRouteWithChildren
   '/site7': typeof Site7Route
+  '/site5-real/about': typeof Site5RealAboutRoute
+  '/site5-real/booking': typeof Site5RealBookingRoute
+  '/site5-real/services': typeof Site5RealServicesRoute
+  '/site6-real/about': typeof Site6RealAboutRoute
+  '/site6-real/booking': typeof Site6RealBookingRoute
+  '/site6-real/services': typeof Site6RealServicesRoute
+  '/site5-real/': typeof Site5RealIndexRoute
+  '/site6-real/': typeof Site6RealIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +148,14 @@ export interface FileRoutesByTo {
   '/site5': typeof Site5Route
   '/site6': typeof Site6Route
   '/site7': typeof Site7Route
+  '/site5-real/about': typeof Site5RealAboutRoute
+  '/site5-real/booking': typeof Site5RealBookingRoute
+  '/site5-real/services': typeof Site5RealServicesRoute
+  '/site6-real/about': typeof Site6RealAboutRoute
+  '/site6-real/booking': typeof Site6RealBookingRoute
+  '/site6-real/services': typeof Site6RealServicesRoute
+  '/site5-real': typeof Site5RealIndexRoute
+  '/site6-real': typeof Site6RealIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +165,18 @@ export interface FileRoutesById {
   '/site3': typeof Site3Route
   '/site4': typeof Site4Route
   '/site5': typeof Site5Route
+  '/site5-real': typeof Site5RealRouteWithChildren
   '/site6': typeof Site6Route
+  '/site6-real': typeof Site6RealRouteWithChildren
   '/site7': typeof Site7Route
+  '/site5-real/about': typeof Site5RealAboutRoute
+  '/site5-real/booking': typeof Site5RealBookingRoute
+  '/site5-real/services': typeof Site5RealServicesRoute
+  '/site6-real/about': typeof Site6RealAboutRoute
+  '/site6-real/booking': typeof Site6RealBookingRoute
+  '/site6-real/services': typeof Site6RealServicesRoute
+  '/site5-real/': typeof Site5RealIndexRoute
+  '/site6-real/': typeof Site6RealIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,8 +187,18 @@ export interface FileRouteTypes {
     | '/site3'
     | '/site4'
     | '/site5'
+    | '/site5-real'
     | '/site6'
+    | '/site6-real'
     | '/site7'
+    | '/site5-real/about'
+    | '/site5-real/booking'
+    | '/site5-real/services'
+    | '/site6-real/about'
+    | '/site6-real/booking'
+    | '/site6-real/services'
+    | '/site5-real/'
+    | '/site6-real/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +209,14 @@ export interface FileRouteTypes {
     | '/site5'
     | '/site6'
     | '/site7'
+    | '/site5-real/about'
+    | '/site5-real/booking'
+    | '/site5-real/services'
+    | '/site6-real/about'
+    | '/site6-real/booking'
+    | '/site6-real/services'
+    | '/site5-real'
+    | '/site6-real'
   id:
     | '__root__'
     | '/'
@@ -119,8 +225,18 @@ export interface FileRouteTypes {
     | '/site3'
     | '/site4'
     | '/site5'
+    | '/site5-real'
     | '/site6'
+    | '/site6-real'
     | '/site7'
+    | '/site5-real/about'
+    | '/site5-real/booking'
+    | '/site5-real/services'
+    | '/site6-real/about'
+    | '/site6-real/booking'
+    | '/site6-real/services'
+    | '/site5-real/'
+    | '/site6-real/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,7 +246,9 @@ export interface RootRouteChildren {
   Site3Route: typeof Site3Route
   Site4Route: typeof Site4Route
   Site5Route: typeof Site5Route
+  Site5RealRoute: typeof Site5RealRouteWithChildren
   Site6Route: typeof Site6Route
+  Site6RealRoute: typeof Site6RealRouteWithChildren
   Site7Route: typeof Site7Route
 }
 
@@ -143,11 +261,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Site7RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/site6-real': {
+      id: '/site6-real'
+      path: '/site6-real'
+      fullPath: '/site6-real'
+      preLoaderRoute: typeof Site6RealRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/site6': {
       id: '/site6'
       path: '/site6'
       fullPath: '/site6'
       preLoaderRoute: typeof Site6RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site5-real': {
+      id: '/site5-real'
+      path: '/site5-real'
+      fullPath: '/site5-real'
+      preLoaderRoute: typeof Site5RealRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/site5': {
@@ -192,8 +324,100 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/site6-real/': {
+      id: '/site6-real/'
+      path: '/'
+      fullPath: '/site6-real/'
+      preLoaderRoute: typeof Site6RealIndexRouteImport
+      parentRoute: typeof Site6RealRoute
+    }
+    '/site5-real/': {
+      id: '/site5-real/'
+      path: '/'
+      fullPath: '/site5-real/'
+      preLoaderRoute: typeof Site5RealIndexRouteImport
+      parentRoute: typeof Site5RealRoute
+    }
+    '/site6-real/services': {
+      id: '/site6-real/services'
+      path: '/services'
+      fullPath: '/site6-real/services'
+      preLoaderRoute: typeof Site6RealServicesRouteImport
+      parentRoute: typeof Site6RealRoute
+    }
+    '/site6-real/booking': {
+      id: '/site6-real/booking'
+      path: '/booking'
+      fullPath: '/site6-real/booking'
+      preLoaderRoute: typeof Site6RealBookingRouteImport
+      parentRoute: typeof Site6RealRoute
+    }
+    '/site6-real/about': {
+      id: '/site6-real/about'
+      path: '/about'
+      fullPath: '/site6-real/about'
+      preLoaderRoute: typeof Site6RealAboutRouteImport
+      parentRoute: typeof Site6RealRoute
+    }
+    '/site5-real/services': {
+      id: '/site5-real/services'
+      path: '/services'
+      fullPath: '/site5-real/services'
+      preLoaderRoute: typeof Site5RealServicesRouteImport
+      parentRoute: typeof Site5RealRoute
+    }
+    '/site5-real/booking': {
+      id: '/site5-real/booking'
+      path: '/booking'
+      fullPath: '/site5-real/booking'
+      preLoaderRoute: typeof Site5RealBookingRouteImport
+      parentRoute: typeof Site5RealRoute
+    }
+    '/site5-real/about': {
+      id: '/site5-real/about'
+      path: '/about'
+      fullPath: '/site5-real/about'
+      preLoaderRoute: typeof Site5RealAboutRouteImport
+      parentRoute: typeof Site5RealRoute
+    }
   }
 }
+
+interface Site5RealRouteChildren {
+  Site5RealAboutRoute: typeof Site5RealAboutRoute
+  Site5RealBookingRoute: typeof Site5RealBookingRoute
+  Site5RealServicesRoute: typeof Site5RealServicesRoute
+  Site5RealIndexRoute: typeof Site5RealIndexRoute
+}
+
+const Site5RealRouteChildren: Site5RealRouteChildren = {
+  Site5RealAboutRoute: Site5RealAboutRoute,
+  Site5RealBookingRoute: Site5RealBookingRoute,
+  Site5RealServicesRoute: Site5RealServicesRoute,
+  Site5RealIndexRoute: Site5RealIndexRoute,
+}
+
+const Site5RealRouteWithChildren = Site5RealRoute._addFileChildren(
+  Site5RealRouteChildren,
+)
+
+interface Site6RealRouteChildren {
+  Site6RealAboutRoute: typeof Site6RealAboutRoute
+  Site6RealBookingRoute: typeof Site6RealBookingRoute
+  Site6RealServicesRoute: typeof Site6RealServicesRoute
+  Site6RealIndexRoute: typeof Site6RealIndexRoute
+}
+
+const Site6RealRouteChildren: Site6RealRouteChildren = {
+  Site6RealAboutRoute: Site6RealAboutRoute,
+  Site6RealBookingRoute: Site6RealBookingRoute,
+  Site6RealServicesRoute: Site6RealServicesRoute,
+  Site6RealIndexRoute: Site6RealIndexRoute,
+}
+
+const Site6RealRouteWithChildren = Site6RealRoute._addFileChildren(
+  Site6RealRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -202,7 +426,9 @@ const rootRouteChildren: RootRouteChildren = {
   Site3Route: Site3Route,
   Site4Route: Site4Route,
   Site5Route: Site5Route,
+  Site5RealRoute: Site5RealRouteWithChildren,
   Site6Route: Site6Route,
+  Site6RealRoute: Site6RealRouteWithChildren,
   Site7Route: Site7Route,
 }
 export const routeTree = rootRouteImport

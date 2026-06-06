@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
 } from "@tanstack/react-router";
+import { SpecSwitcher } from "../components/SpecSwitcher";
 
 function NotFoundComponent() {
   return (
@@ -89,6 +90,8 @@ function RootComponent() {
       <HeadContent />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      {/* Review-only floating switcher; hides itself on the landing page. */}
+      <SpecSwitcher />
     </QueryClientProvider>
   );
 }
