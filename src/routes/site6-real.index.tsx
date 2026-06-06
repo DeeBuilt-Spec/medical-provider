@@ -10,6 +10,8 @@ export const Route = createFileRoute("/site6-real/")({
 });
 
 const grade = "linear-gradient(180deg, rgba(30,42,43,0.16) 0%, rgba(46,90,94,0.10) 65%, rgba(30,42,43,0.28) 100%)";
+// Hero-specific overlay: darkest at the left (behind the copy), fading clear to the right so the photo stays open.
+const heroScrim = "linear-gradient(100deg, rgba(22,34,35,0.74) 0%, rgba(22,34,35,0.56) 38%, rgba(22,34,35,0.18) 70%, rgba(22,34,35,0.06) 100%), linear-gradient(180deg, rgba(22,34,35,0.30) 0%, rgba(22,34,35,0.12) 50%, rgba(22,34,35,0.40) 100%)";
 const photoFilter = "saturate(0.92) contrast(1.02)";
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 500, letterSpacing: "0.26em", textTransform: "uppercase", color: t6.teal, margin: 0 };
 
@@ -23,7 +25,7 @@ function Home() {
           aria-hidden
           style={{
             position: "absolute", inset: "-8% 0",
-            backgroundImage: `${grade}, url(${heroImg})`,
+            backgroundImage: `${heroScrim}, url(${heroImg})`,
             backgroundSize: "cover", backgroundPosition: "center",
             transform: `translate3d(0, ${offset}px, 0)`, willChange: "transform", filter: photoFilter,
           }}
@@ -32,10 +34,10 @@ function Home() {
           <div style={{ maxWidth: 760 }}>
             <p style={{ ...eyebrow, color: "#CFE0DE", marginBottom: 24 }}>Direct Primary Care · Weight Management · Physicals</p>
             <h1 style={{ fontFamily: t6.serif, fontSize: "clamp(40px, 6vw, 76px)", lineHeight: 1.04, fontWeight: 400, letterSpacing: "-0.015em", color: "#FBFAF7", margin: "0 0 24px" }}>
-              A nurse practitioner with real time for your health.
+              Make time for you.
             </h1>
             <p style={{ fontSize: 19, color: "#E7EDEC", lineHeight: 1.6, margin: "0 0 16px", maxWidth: "50ch" }}>
-              Cash-pay primary care, GLP-1 weight management, and physicals — by video or in person. Visits run 30 to 45 minutes, with same-week appointments.
+              30 to 45 minute visits, with same-week appointments.
             </p>
             <p style={{ fontSize: 15, color: "#CFE0DE", margin: "0 0 40px", fontStyle: "italic", fontFamily: t6.serif }}>
               {practice.languages} · {practice.greeting}
