@@ -11,6 +11,14 @@ const base = process.env.VITE_BASE ?? "/";
 
 export default defineConfig({
   base,
+  server: {
+    port: 5100,
+    strictPort: true,
+  },
+  preview: {
+    port: 5100,
+    strictPort: true,
+  },
   plugins: [
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),

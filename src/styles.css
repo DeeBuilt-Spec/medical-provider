@@ -144,6 +144,19 @@
 }
 
 /*
+ * Editorial drop-cap (site2 About paragraph). ::first-letter can't be set via
+ * inline styles, so the treatment lives here and is opted into with .dropcap.
+ */
+.dropcap::first-letter {
+  float: left;
+  font-family: "Bodoni Moda", "Didot", Georgia, serif;
+  font-size: 5.2em;
+  line-height: 0.78;
+  padding: 6px 14px 0 0;
+  font-weight: 500;
+}
+
+/*
  * Mobile responsive layer.
  *
  * The landing page and the site1–site5 mockups are built with inline styles

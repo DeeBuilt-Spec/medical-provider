@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Site7RouteImport } from './routes/site7'
 import { Route as Site6RouteImport } from './routes/site6'
 import { Route as Site5RouteImport } from './routes/site5'
 import { Route as Site4RouteImport } from './routes/site4'
@@ -17,6 +18,11 @@ import { Route as Site2RouteImport } from './routes/site2'
 import { Route as Site1RouteImport } from './routes/site1'
 import { Route as IndexRouteImport } from './routes/index'
 
+const Site7Route = Site7RouteImport.update({
+  id: '/site7',
+  path: '/site7',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Site6Route = Site6RouteImport.update({
   id: '/site6',
   path: '/site6',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/site4': typeof Site4Route
   '/site5': typeof Site5Route
   '/site6': typeof Site6Route
+  '/site7': typeof Site7Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/site4': typeof Site4Route
   '/site5': typeof Site5Route
   '/site6': typeof Site6Route
+  '/site7': typeof Site7Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/site4': typeof Site4Route
   '/site5': typeof Site5Route
   '/site6': typeof Site6Route
+  '/site7': typeof Site7Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,8 +100,17 @@ export interface FileRouteTypes {
     | '/site4'
     | '/site5'
     | '/site6'
+    | '/site7'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/site1' | '/site2' | '/site3' | '/site4' | '/site5' | '/site6'
+  to:
+    | '/'
+    | '/site1'
+    | '/site2'
+    | '/site3'
+    | '/site4'
+    | '/site5'
+    | '/site6'
+    | '/site7'
   id:
     | '__root__'
     | '/'
@@ -102,6 +120,7 @@ export interface FileRouteTypes {
     | '/site4'
     | '/site5'
     | '/site6'
+    | '/site7'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -112,10 +131,18 @@ export interface RootRouteChildren {
   Site4Route: typeof Site4Route
   Site5Route: typeof Site5Route
   Site6Route: typeof Site6Route
+  Site7Route: typeof Site7Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/site7': {
+      id: '/site7'
+      path: '/site7'
+      fullPath: '/site7'
+      preLoaderRoute: typeof Site7RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/site6': {
       id: '/site6'
       path: '/site6'
@@ -176,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   Site4Route: Site4Route,
   Site5Route: Site5Route,
   Site6Route: Site6Route,
+  Site7Route: Site7Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

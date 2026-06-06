@@ -16,7 +16,8 @@ const sites = [
   { to: "/site3", label: "Site 03", name: "Asymmetric editorial", note: "Off-grid composition · navy accent · mono details" },
   { to: "/site4", label: "Site 04", name: "Warm neighborhood", note: "Inviting centered hero · soft sage · Lora serif" },
   { to: "/site5", label: "Site 05", name: "Friendly family practice", note: "Approachable split layout · soft teal accent" },
-  { to: "/site6", label: "Site 06", name: "Modern clinical & trustworthy", note: "Geometric sans · rounded cards · teal + coral · trust signals" },
+  { to: "/site6", label: "Site 06", name: "Quiet modern clinical-chic", note: "Newsreader serif · tonal teal · hairline sections · provider + FAQ" },
+  { to: "/site7", label: "Site 07", name: "Warm & down-to-earth", note: "The approachable, Squarespace-grade take · centered welcome · Lora" },
 ] as const;
 
 function Index() {
@@ -35,7 +36,7 @@ function Index() {
           Client Review
         </p>
         <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 400, fontSize: "clamp(40px, 6vw, 72px)", lineHeight: 1.05, margin: "24px 0 16px", maxWidth: 800 }}>
-          Providence Care Plus — three homepage directions.
+          Providence Care Plus — homepage directions.
         </h1>
         <p style={{ fontSize: 18, color: "#4a4a4a", maxWidth: 640, lineHeight: 1.6, margin: 0 }}>
           Each link opens a complete mockup of the homepage in a distinct design direction. Open them in separate tabs to compare.
