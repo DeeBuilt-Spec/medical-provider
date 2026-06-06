@@ -40,7 +40,7 @@ function Site3() {
       {/* Nav */}
       <nav style={{ position: "sticky", top: 0, zIndex: 50, padding: "24px 32px", display: "flex", justifyContent: "space-between", alignItems: "flex-end", background: "rgba(248,247,244,0.85)", backdropFilter: "blur(8px)" }}>
         <span style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase" }}>Providence Care Plus</span>
-        <div style={{ display: "flex", gap: 48, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 500 }}>
+        <div className="r-hide" style={{ display: "flex", gap: 48, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 500 }}>
           <a href="#practice" style={{ color: "inherit", textDecoration: "none" }}>Practice</a>
           <a href="#services" style={{ color: "inherit", textDecoration: "none" }}>Services</a>
           <a href="#method" style={{ color: "inherit", textDecoration: "none" }}>Method</a>
@@ -50,7 +50,7 @@ function Site3() {
 
       {/* Hero asymmetric */}
       <section style={{ paddingTop: 80, paddingBottom: 160, padding: "80px 80px 160px", maxWidth: 1440, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: 32, alignItems: "start" }}>
+        <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: 32, alignItems: "start" }}>
           <div style={{ gridColumn: "span 5", paddingTop: 48 }}>
             <p style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", color: palette.muted, margin: "0 0 32px" }}>Direct Primary Care</p>
             <h1 style={{ fontFamily: serif, fontSize: "clamp(48px, 7vw, 112px)", lineHeight: 0.95, fontWeight: 500, margin: "0 0 48px" }}>
@@ -63,7 +63,7 @@ function Site3() {
           </div>
 
           <div style={{ gridColumn: "7 / -1", position: "relative" }}>
-            <div style={{ position: "absolute", inset: "-16px -16px -16px 16px", border: `1px solid ${palette.border}`, transform: "translate(32px, 32px)", zIndex: 0 }} />
+            <div className="r-hide" style={{ position: "absolute", inset: "-16px -16px -16px 16px", border: `1px solid ${palette.border}`, transform: "translate(32px, 32px)", zIndex: 0 }} />
             <div style={{ position: "relative", aspectRatio: "4 / 5", overflow: "hidden", boxShadow: "0 30px 60px -30px rgba(26,31,38,0.3)", zIndex: 1 }}>
               <div
                 aria-hidden
@@ -93,8 +93,8 @@ function Site3() {
       </section>
 
       {/* Services */}
-      <section id="services" style={{ padding: "180px 80px", maxWidth: 1440, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 160 }}>
+      <section id="services" className="r-pad-y" style={{ padding: "180px 80px", maxWidth: 1440, margin: "0 auto" }}>
+        <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 160 }}>
           <div>
             <p style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: palette.muted, margin: "0 0 32px" }}>01 / 02</p>
             <h3 style={{ fontFamily: serif, fontSize: 44, fontWeight: 500, margin: "0 0 32px" }}>Direct Primary Care</h3>
@@ -116,7 +116,7 @@ function Site3() {
       <section id="method" style={{ padding: "140px 80px", borderTop: `1px solid ${palette.border}`, background: palette.white }}>
         <div style={{ maxWidth: 1440, margin: "0 auto" }}>
           <h2 style={{ fontFamily: serif, fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 500, margin: "0 0 96px" }}>The Method</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
+          <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 64 }}>
             {[
               { n: "01", t: "Discovery", d: "Begin with a comprehensive virtual consultation to map your clinical history and personal wellness goals." },
               { n: "02", t: "Architecture", d: "Receive a tailored protocol including diagnostic labs and prescription management where clinically indicated." },
@@ -154,8 +154,8 @@ function ContactSite3() {
   const input: React.CSSProperties = { width: "100%", background: "transparent", border: "none", outline: "none", fontSize: 17, fontFamily: sans, color: palette.ink };
 
   return (
-    <section id="contact" style={{ padding: "180px 80px", maxWidth: 1440, margin: "0 auto" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 96, alignItems: "start" }}>
+    <section id="contact" className="r-pad-y" style={{ padding: "180px 80px", maxWidth: 1440, margin: "0 auto" }}>
+      <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 96, alignItems: "start" }}>
         <div>
           <h2 style={{ fontFamily: serif, fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 500, margin: "0 0 24px" }}>Begin your care.</h2>
           <p style={{ color: palette.muted, marginBottom: 48, maxWidth: 360, lineHeight: 1.65 }}>
@@ -171,7 +171,7 @@ function ContactSite3() {
           <p style={{ color: palette.navy, fontSize: 18 }}>Thank you — we'll be in touch shortly.</p>
         ) : (
           <form onSubmit={onSubmit} style={{ display: "flex", flexDirection: "column", gap: 48 }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
+            <div className="r-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
               <div style={field}><label style={label}>Full Name</label><input required type="text" placeholder="J. Smith" style={input} /></div>
               <div style={field}><label style={label}>Email Address</label><input required type="email" placeholder="email@domain.com" style={input} /></div>
             </div>

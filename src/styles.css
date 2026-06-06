@@ -142,3 +142,55 @@
     color: var(--color-foreground);
   }
 }
+
+/*
+ * Mobile responsive layer.
+ *
+ * The landing page and the site1–site5 mockups are built with inline styles
+ * (hard-coded multi-column grids, large fixed paddings, tall hero images,
+ * horizontal navs). Inline styles win on specificity, so the rules below use
+ * !important — scoped to a single mobile media query — to collapse those
+ * layouts on phones without changing the desktop design.
+ *
+ * Class hooks added to the relevant containers in the route files:
+ *   .r-stack     collapse any grid to a single column (children span reset)
+ *   .r-gap       shrink oversized grid gaps once stacked
+ *   .r-hide      hide elements that overflow on mobile (e.g. nav link rows)
+ *   .r-hero-img  cap tall fixed-height hero image panels
+ *   .r-pad-y     trim excessive vertical section padding
+ */
+@media (max-width: 768px) {
+  /* Tame horizontal padding on every full-bleed section so nothing overflows
+     the viewport. Longhand !important beats the inline `padding` shorthand
+     while leaving each section's vertical rhythm intact. */
+  section {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+
+  .r-stack {
+    grid-template-columns: 1fr !important;
+  }
+
+  .r-stack > * {
+    grid-column: auto !important;
+  }
+
+  .r-gap {
+    gap: 36px !important;
+  }
+
+  .r-hide {
+    display: none !important;
+  }
+
+  .r-hero-img {
+    height: 300px !important;
+    min-height: 300px !important;
+  }
+
+  .r-pad-y {
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+  }
+}

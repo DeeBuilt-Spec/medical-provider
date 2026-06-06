@@ -38,7 +38,7 @@ function Site2() {
       {/* Nav */}
       <nav style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 50, padding: "28px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ fontFamily: serif, fontSize: 22, fontWeight: 500 }}>Providence Care Plus</span>
-        <div style={{ display: "flex", gap: 40, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: palette.muted }}>
+        <div className="r-hide" style={{ display: "flex", gap: 40, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: palette.muted }}>
           <a href="#practice" style={{ color: "inherit", textDecoration: "none" }}>Practice</a>
           <a href="#services" style={{ color: "inherit", textDecoration: "none" }}>Services</a>
           <a href="#process" style={{ color: "inherit", textDecoration: "none" }}>Process</a>
@@ -48,7 +48,7 @@ function Site2() {
 
       {/* Hero split */}
       <section style={{ minHeight: "100vh", paddingTop: 120, paddingBottom: 60, display: "flex", alignItems: "center" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%", padding: "0 40px", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, alignItems: "center" }}>
+        <div className="r-stack r-gap" style={{ maxWidth: 1280, margin: "0 auto", width: "100%", padding: "0 40px", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, alignItems: "center" }}>
           <div>
             <h1 style={{ fontFamily: serif, fontSize: "clamp(48px, 7vw, 104px)", lineHeight: 0.98, fontWeight: 400, margin: "0 0 32px", letterSpacing: "-0.01em" }}>
               Primary care <br />
@@ -62,7 +62,7 @@ function Site2() {
               Book an Appointment
             </a>
           </div>
-          <div style={{ position: "relative", height: "78vh", overflow: "hidden" }}>
+          <div className="r-hero-img" style={{ position: "relative", height: "78vh", overflow: "hidden" }}>
             <div
               aria-hidden
               style={{
@@ -95,10 +95,10 @@ function Site2() {
       </section>
 
       {/* Services */}
-      <section id="services" style={{ padding: "180px 40px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 60, borderTop: "1px solid rgba(31,36,33,0.15)", paddingTop: 64 }}>
+      <section id="services" className="r-pad-y" style={{ padding: "180px 40px" }}>
+        <div className="r-stack r-gap" style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 60, borderTop: "1px solid rgba(31,36,33,0.15)", paddingTop: 64 }}>
           <h2 style={{ fontFamily: serif, fontSize: 48, fontWeight: 400, margin: 0 }}>Our Care</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>
+          <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>
             <div>
               <h3 style={{ fontFamily: serif, fontSize: 28, fontWeight: 500, margin: "0 0 20px" }}>Primary Care</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
@@ -116,10 +116,10 @@ function Site2() {
       </section>
 
       {/* Process */}
-      <section id="process" style={{ padding: "160px 40px", background: "#171917", color: "#D6D4CF" }}>
+      <section id="process" className="r-pad-y" style={{ padding: "160px 40px", background: "#171917", color: "#D6D4CF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <p style={{ fontSize: 12, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(214,212,207,0.5)", margin: "0 0 80px" }}>The Process</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 80 }}>
+          <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 80 }}>
             {[
               { n: "01", t: "Virtual Intake", d: "Begin with a detailed health assessment and medical history review through our secure digital portal." },
               { n: "02", t: "Consultation", d: "A 45-minute virtual visit to discuss your health goals and establish a tailored medical treatment plan." },
@@ -161,7 +161,7 @@ function ContactSite2() {
         {sent ? (
           <p style={{ color: palette.sage, fontSize: 18 }}>Thank you — we'll be in touch shortly.</p>
         ) : (
-          <form onSubmit={onSubmit} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36 }}>
+          <form onSubmit={onSubmit} className="r-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36 }}>
             <label style={{ display: "flex", flexDirection: "column", gap: 8 }}><span style={fieldLabel}>Full Name</span><input required type="text" style={input} /></label>
             <label style={{ display: "flex", flexDirection: "column", gap: 8 }}><span style={fieldLabel}>Email Address</span><input required type="email" style={input} /></label>
             <label style={{ display: "flex", flexDirection: "column", gap: 8 }}><span style={fieldLabel}>Phone Number</span><input type="tel" style={input} /></label>

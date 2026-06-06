@@ -101,7 +101,7 @@ function Site1() {
             { n: "02", t: "Personalized Plan", d: "We develop a tailored care roadmap, whether routine primary care or a specialized GLP-1 protocol." },
             { n: "03", t: "Ongoing Connection", d: "Direct messaging and follow-up visits ensure you are supported every step of the way." },
           ].map((s, i, arr) => (
-            <div key={s.n} style={{ display: "grid", gridTemplateColumns: "120px 1fr", gap: 24, padding: "44px 0", borderBottom: i === arr.length - 1 ? "none" : "1px solid rgba(26,28,25,0.1)" }}>
+            <div key={s.n} className="r-stack" style={{ display: "grid", gridTemplateColumns: "120px 1fr", gap: 24, padding: "44px 0", borderBottom: i === arr.length - 1 ? "none" : "1px solid rgba(26,28,25,0.1)" }}>
               <span style={{ fontFamily: serif, fontSize: 32, color: palette.sage }}>{s.n}</span>
               <div style={{ maxWidth: 600 }}>
                 <h4 style={{ fontSize: 20, fontWeight: 500, margin: "0 0 12px" }}>{s.t}</h4>
@@ -149,7 +149,7 @@ function Contact() {
         ) : (
           <form onSubmit={onSubmit} style={{ display: "flex", flexDirection: "column", gap: 48 }}>
             <input required type="text" placeholder="Full Name" style={inputStyle} />
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
+            <div className="r-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
               <input required type="email" placeholder="Email Address" style={inputStyle} />
               <input type="tel" placeholder="Phone Number" style={inputStyle} />
             </div>

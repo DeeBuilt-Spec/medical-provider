@@ -39,7 +39,7 @@ function Site4() {
       {/* Nav */}
       <nav style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 50, padding: "24px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ fontFamily: serif, fontSize: 22, fontWeight: 600, color: palette.sageDeep }}>Providence Care Plus</span>
-        <div style={{ display: "flex", gap: 36, fontSize: 14, color: palette.ink }}>
+        <div className="r-hide" style={{ display: "flex", gap: 36, fontSize: 14, color: palette.ink }}>
           <a href="#about" style={{ color: "inherit", textDecoration: "none" }}>About</a>
           <a href="#services" style={{ color: "inherit", textDecoration: "none" }}>Services</a>
           <a href="#how" style={{ color: "inherit", textDecoration: "none" }}>How It Works</a>
@@ -124,7 +124,7 @@ function Site4() {
             <p style={{ fontFamily: serif, fontStyle: "italic", color: palette.sageDeep, fontSize: 16, margin: "0 0 12px" }}>How it works</p>
             <h2 style={{ fontFamily: serif, fontSize: 40, fontWeight: 500, margin: 0 }}>Getting started is simple.</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
+          <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
             {[
               { n: "1", t: "Reach out", d: "Send a message through the form below or give us a call. We'll get back to you within a business day." },
               { n: "2", t: "Schedule a visit", d: "Pick a time that works — in-person or virtual. We'll talk through your goals and answer any questions." },
@@ -178,7 +178,7 @@ function ContactSite4() {
         ) : (
           <form onSubmit={onSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <input required type="text" placeholder="Your name" style={input} />
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+            <div className="r-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
               <input required type="email" placeholder="Email" style={input} />
               <input type="tel" placeholder="Phone" style={input} />
             </div>

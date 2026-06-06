@@ -45,6 +45,7 @@ function Index() {
             <Link
               key={s.to}
               to={s.to}
+              className="r-stack"
               style={{
                 display: "grid",
                 gridTemplateColumns: "120px 1fr auto",

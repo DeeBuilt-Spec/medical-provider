@@ -39,7 +39,7 @@ function Site5() {
       {/* Nav */}
       <nav style={{ padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", background: palette.cream, borderBottom: `1px solid ${palette.warm}` }}>
         <span style={{ fontFamily: serif, fontSize: 22, fontWeight: 600, color: palette.tealDeep }}>Providence Care Plus</span>
-        <div style={{ display: "flex", gap: 32, fontSize: 14, color: palette.ink, alignItems: "center" }}>
+        <div className="r-hide" style={{ display: "flex", gap: 32, fontSize: 14, color: palette.ink, alignItems: "center" }}>
           <a href="#about" style={{ color: "inherit", textDecoration: "none" }}>About</a>
           <a href="#services" style={{ color: "inherit", textDecoration: "none" }}>Services</a>
           <a href="#how" style={{ color: "inherit", textDecoration: "none" }}>How It Works</a>
@@ -49,7 +49,7 @@ function Site5() {
 
       {/* Hero - split warm */}
       <section style={{ padding: "80px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", gap: 72, alignItems: "center" }}>
+        <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", gap: 72, alignItems: "center" }}>
           <div>
             <p style={{ fontSize: 14, color: palette.tealDeep, margin: "0 0 24px", fontWeight: 600, letterSpacing: "0.05em" }}>
               DIRECT PRIMARY CARE · GLP-1 VIRTUAL VISITS
@@ -69,7 +69,7 @@ function Site5() {
               </a>
             </div>
           </div>
-          <div style={{ position: "relative", height: 560, overflow: "hidden", background: palette.warm }}>
+          <div className="r-hero-img" style={{ position: "relative", height: 560, overflow: "hidden", background: palette.warm }}>
             <div
               aria-hidden
               style={{
@@ -88,7 +88,7 @@ function Site5() {
 
       {/* About */}
       <section id="about" style={{ padding: "100px 40px", background: palette.warm }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 80, alignItems: "start" }}>
+        <div className="r-stack r-gap" style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 80, alignItems: "start" }}>
           <div>
             <p style={{ fontSize: 13, color: palette.tealDeep, fontWeight: 600, letterSpacing: "0.08em", margin: "0 0 16px" }}>ABOUT</p>
             <h2 style={{ fontFamily: serif, fontSize: 40, fontWeight: 600, lineHeight: 1.15, margin: 0 }}>
@@ -111,7 +111,7 @@ function Site5() {
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
           <p style={{ fontSize: 13, color: palette.tealDeep, fontWeight: 600, letterSpacing: "0.08em", margin: "0 0 16px" }}>WHAT WE OFFER</p>
           <h2 style={{ fontFamily: serif, fontSize: 40, fontWeight: 600, margin: "0 0 64px" }}>Two services, lots of care.</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, borderTop: `1px solid ${palette.warm}`, paddingTop: 56 }}>
+          <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, borderTop: `1px solid ${palette.warm}`, paddingTop: 56 }}>
             <div>
               <h3 style={{ fontFamily: serif, fontSize: 26, fontWeight: 600, color: palette.tealDeep, margin: "0 0 20px" }}>Primary Care</h3>
               <p style={{ fontSize: 17, lineHeight: 1.75, color: palette.ink, margin: "0 0 16px" }}>
@@ -139,7 +139,7 @@ function Site5() {
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
           <p style={{ fontSize: 13, color: palette.tealDeep, fontWeight: 600, letterSpacing: "0.08em", margin: "0 0 16px" }}>HOW IT WORKS</p>
           <h2 style={{ fontFamily: serif, fontSize: 40, fontWeight: 600, margin: "0 0 64px" }}>Three friendly steps.</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
+          <div className="r-stack r-gap" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
             {[
               { n: "Step 01", t: "Get in touch", d: "Fill out the form or call us. We'll respond within one business day to find a time that works for you." },
               { n: "Step 02", t: "Meet your provider", d: "Have a real conversation — about your health, your goals, and what kind of care feels right for you." },
@@ -182,7 +182,7 @@ function ContactSite5() {
   };
   return (
     <section id="contact" style={{ padding: "100px 40px" }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 72, alignItems: "start" }}>
+      <div className="r-stack r-gap" style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 72, alignItems: "start" }}>
         <div>
           <p style={{ fontSize: 13, color: palette.tealDeep, fontWeight: 600, letterSpacing: "0.08em", margin: "0 0 16px" }}>CONTACT</p>
           <h2 style={{ fontFamily: serif, fontSize: 40, fontWeight: 600, lineHeight: 1.15, margin: "0 0 24px" }}>
@@ -205,7 +205,7 @@ function ContactSite5() {
               <label style={label}>Name</label>
               <input required type="text" style={input} />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+            <div className="r-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
               <div>
                 <label style={label}>Email</label>
                 <input required type="email" style={input} />
