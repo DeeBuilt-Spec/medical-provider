@@ -1,20 +1,6 @@
-import { createFileRoute, Outlet, Link, useRouterState } from "@tanstack/react-router";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { practice } from "../lib/practice";
-
-export const Route = createFileRoute("/site6-real")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Direct Primary Care & Weight Management" },
-      { name: "description", content: "Cash-pay direct primary care, GLP-1 weight management, and physicals. Virtual or in person. English & Kreyòl Ayisyen." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500&display=swap" },
-    ],
-  }),
-  component: Site6RealLayout,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 // Clinical-chic theme tokens — tonal teal, warm paper, single accent.
 export const t6 = {
@@ -36,12 +22,13 @@ const navLinks = [
   { to: "/site6-real/booking", label: "Book", exact: false },
 ] as const;
 
-function Site6RealLayout() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+export default function Site6RealLayout() {
+  useDocumentTitle("Providence Care Plus — Direct Primary Care & Weight Management");
+  // react-router is mounted with basename, so useLocation().pathname is already
+  // base-relative (e.g. "/site6-real/services") — compare against the bare `to`.
+  const pathname = useLocation().pathname;
   const isActive = (to: string, exact: boolean) => {
-    const full = `${base}${to}`;
-    return exact ? pathname === full || pathname === `${full}/` : pathname.startsWith(full);
+    return exact ? pathname === to || pathname === `${to}/` : pathname.startsWith(to);
   };
 
   return (

@@ -1,15 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useSearchParams } from "react-router-dom";
 import { practice } from "../lib/practice";
 import { BookingCalendar, type BookingTheme } from "../components/BookingCalendar";
 import { t6 } from "./site6-real";
-
-export const Route = createFileRoute("/site6-real/booking")({
-  head: () => ({ meta: [{ title: "Book a Visit — Providence Care Plus" }] }),
-  validateSearch: (search: Record<string, unknown>): { service?: string } => ({
-    service: typeof search.service === "string" ? search.service : undefined,
-  }),
-  component: BookingPage,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const bookingTheme: BookingTheme = {
   paper: t6.paper,
@@ -25,8 +18,10 @@ const bookingTheme: BookingTheme = {
 
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 500, letterSpacing: "0.26em", textTransform: "uppercase", color: t6.teal, margin: 0 };
 
-function BookingPage() {
-  const { service } = Route.useSearch();
+export default function BookingPage() {
+  useDocumentTitle("Book a Visit — Providence Care Plus");
+  const [searchParams] = useSearchParams();
+  const service = searchParams.get("service") ?? undefined;
   return (
     <section style={{ padding: "clamp(64px, 10vh, 110px) 24px clamp(80px, 12vh, 130px)" }}>
       <div className="r-stack r-gap" style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 72, alignItems: "start" }}>

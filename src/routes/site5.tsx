@@ -1,25 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import heroImg from "../assets/hero-site5.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
-
-export const Route = createFileRoute("/site5")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Friendly Family Care" },
-      { name: "description", content: "Approachable primary care and GLP-1 virtual appointments for your neighborhood." },
-      { property: "og:title", content: "Providence Care Plus" },
-      { property: "og:description", content: "Approachable primary care and GLP-1 virtual appointments." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&display=swap" },
-    ],
-  }),
-  component: Site5,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 // Teal muted one notch toward sophistication — desaturated, deeper, calmer.
 const palette = {
@@ -42,7 +25,8 @@ const photoFilter = "saturate(0.95) contrast(1.02)";
 // Small uppercase wide-tracked label — the sharpened hierarchy detail.
 const eyebrow: React.CSSProperties = { fontSize: 11, color: palette.tealDeep, fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", margin: "0 0 20px" };
 
-function Site5() {
+export default function Site5() {
+  useDocumentTitle("Providence Care Plus — Friendly Family Care");
   const offset = useParallax(0.25);
   return (
     <div style={{ background: palette.cream, color: palette.ink, fontFamily: sans }}>

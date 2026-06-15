@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
-import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // GitHub Pages serves this project under /<repo>/. The base path is injected
 // at build time via the VITE_BASE env var (set by the deploy workflow) and
@@ -19,12 +18,7 @@ export default defineConfig({
     port: 5100,
     strictPort: true,
   },
-  plugins: [
-    tanstackRouter({ target: "react", autoCodeSplitting: true }),
-    react(),
-    tailwindcss(),
-    tsConfigPaths(),
-  ],
+  plugins: [react(), tailwindcss(), tsConfigPaths()],
   build: {
     outDir: "dist",
   },

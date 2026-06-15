@@ -1,17 +1,14 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import providerImg from "../assets/stethoscope.jpg";
 import { practice, faqs } from "../lib/practice";
 import { t5 } from "./site5-real";
-
-export const Route = createFileRoute("/site5-real/about")({
-  head: () => ({ meta: [{ title: "About — Providence Care Plus" }] }),
-  component: AboutPage,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const grade = "linear-gradient(180deg, rgba(46,42,38,0.10) 0%, rgba(85,126,120,0.10) 70%, rgba(46,42,38,0.18) 100%)";
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: t5.tealDeep, margin: 0 };
 
-function AboutPage() {
+export default function AboutPage() {
+  useDocumentTitle("About — Providence Care Plus");
   return (
     <div>
       <section style={{ padding: "clamp(56px, 9vh, 110px) 24px" }}>

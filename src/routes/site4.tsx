@@ -1,25 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import heroImg from "../assets/hero-site4.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
-
-export const Route = createFileRoute("/site4")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Your Neighborhood Practice" },
-      { name: "description", content: "Friendly, attentive primary care and GLP-1 virtual visits for your whole family." },
-      { property: "og:title", content: "Providence Care Plus" },
-      { property: "og:description", content: "Friendly primary care and GLP-1 virtual visits for everyday families." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" },
-    ],
-  }),
-  component: Site4,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const palette = {
   cream: "#FBF7F1",
@@ -39,7 +22,8 @@ const grade =
   "linear-gradient(180deg, rgba(51,48,43,0.10) 0%, rgba(94,122,96,0.10) 70%, rgba(51,48,43,0.18) 100%)";
 const photoFilter = "saturate(0.95) contrast(1.02)";
 
-function Site4() {
+export default function Site4() {
+  useDocumentTitle("Providence Care Plus — Your Neighborhood Practice");
   const offset = useParallax(0.25);
   return (
     <div style={{ background: palette.cream, color: palette.ink, fontFamily: sans }}>

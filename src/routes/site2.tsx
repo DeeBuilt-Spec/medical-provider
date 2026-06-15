@@ -1,25 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import heroImg from "../assets/hero-site2.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
-
-export const Route = createFileRoute("/site2")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Primary Care Reimagined" },
-      { name: "description", content: "Personalized, virtual-first primary care and GLP-1 weight wellness for the modern patient." },
-      { property: "og:title", content: "Providence Care Plus" },
-      { property: "og:description", content: "Personalized, virtual-first primary care and GLP-1 weight wellness." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&display=swap" },
-    ],
-  }),
-  component: Site2,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 // Stark gallery editorial — paper + near-black only, NO color accent.
 const palette = {
@@ -38,7 +21,8 @@ const grade =
   "linear-gradient(180deg, rgba(20,20,20,0.12) 0%, rgba(20,20,20,0.04) 50%, rgba(20,20,20,0.18) 100%)";
 const photoFilter = "grayscale(1) contrast(1.06) brightness(1.02)";
 
-function Site2() {
+export default function Site2() {
+  useDocumentTitle("Providence Care Plus — Primary Care Reimagined");
   const offset = useParallax(0.22);
   return (
     <div style={{ background: palette.paper, color: palette.ink, fontFamily: sans }}>

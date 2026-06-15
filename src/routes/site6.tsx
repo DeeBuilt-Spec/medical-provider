@@ -1,25 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import heroImg from "../assets/hero-site5.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
-
-export const Route = createFileRoute("/site6")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Modern Primary Care You Can Trust" },
-      { name: "description", content: "Direct primary care and GLP-1 virtual visits from a licensed nurse practitioner. Same-week appointments, English & Kreyòl Ayisyen." },
-      { property: "og:title", content: "Providence Care Plus" },
-      { property: "og:description", content: "Modern, trustworthy primary care and GLP-1 virtual visits." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter:wght@400;500&display=swap" },
-    ],
-  }),
-  component: Site6,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 /*
  * Single source of truth for everything client-specific. To reskin this
@@ -59,7 +42,8 @@ const photoFilter = "saturate(0.92) contrast(1.02)";
 
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 500, letterSpacing: "0.26em", textTransform: "uppercase", color: palette.teal, margin: 0 };
 
-function Site6() {
+export default function Site6() {
+  useDocumentTitle("Providence Care Plus — Modern Primary Care You Can Trust");
   const offset = useParallax(0.2);
   return (
     <div style={{ background: palette.paper, color: palette.ink, fontFamily: sans }}>

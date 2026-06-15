@@ -1,15 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { practice, services } from "../lib/practice";
 import { t5 } from "./site5-real";
-
-export const Route = createFileRoute("/site5-real/services")({
-  head: () => ({ meta: [{ title: "Services & Pricing — Providence Care Plus" }] }),
-  component: ServicesPage,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: t5.tealDeep, margin: 0 };
 
-function ServicesPage() {
+export default function ServicesPage() {
+  useDocumentTitle("Services & Pricing — Providence Care Plus");
   return (
     <div>
       <section style={{ padding: "clamp(64px, 10vh, 110px) 24px clamp(40px, 6vh, 64px)", borderBottom: `1px solid ${t5.hair}` }}>
@@ -45,7 +42,7 @@ function ServicesPage() {
                   <li key={item} style={{ fontSize: 16, color: t5.ink, lineHeight: 1.5, padding: "14px 0", borderTop: `1px solid ${t5.hair}` }}>{item}</li>
                 ))}
               </ul>
-              <Link to="/site5-real/booking" search={{ service: s.id }} style={{ display: "inline-block", padding: "13px 28px", border: `1px solid ${t5.tealDeep}`, color: t5.tealDeep, fontSize: 12, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", textDecoration: "none", borderRadius: 8 }}>
+              <Link to={`/site5-real/booking?service=${s.id}`} style={{ display: "inline-block", padding: "13px 28px", border: `1px solid ${t5.tealDeep}`, color: t5.tealDeep, fontSize: 12, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", textDecoration: "none", borderRadius: 8 }}>
                 Book {s.name}
               </Link>
             </div>

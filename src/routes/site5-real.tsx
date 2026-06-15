@@ -1,20 +1,6 @@
-import { createFileRoute, Outlet, Link, useRouterState } from "@tanstack/react-router";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { practice } from "../lib/practice";
-
-export const Route = createFileRoute("/site5-real")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Friendly Primary Care & Weight Care" },
-      { name: "description", content: "Cash-pay primary care, GLP-1 weight management, and physicals from a friendly nurse practitioner. Virtual or in person. English & Kreyòl Ayisyen." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&display=swap" },
-    ],
-  }),
-  component: Site5RealLayout,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 // Friendly theme tokens — muted teal, warm cream, soft.
 export const t5 = {
@@ -36,12 +22,13 @@ const navLinks = [
   { to: "/site5-real/booking", label: "Book", exact: false },
 ] as const;
 
-function Site5RealLayout() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+export default function Site5RealLayout() {
+  useDocumentTitle("Providence Care Plus — Friendly Primary Care & Weight Care");
+  // react-router is mounted with basename, so useLocation().pathname is already
+  // base-relative (e.g. "/site5-real/services") — compare against the bare `to`.
+  const pathname = useLocation().pathname;
   const isActive = (to: string, exact: boolean) => {
-    const full = `${base}${to}`;
-    return exact ? pathname === full || pathname === `${full}/` : pathname.startsWith(full);
+    return exact ? pathname === to || pathname === `${to}/` : pathname.startsWith(to);
   };
 
   return (

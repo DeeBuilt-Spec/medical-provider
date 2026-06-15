@@ -1,24 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import heroImg from "../assets/hero-site4.jpg";
 import { useParallax } from "../lib/useParallax";
-
-export const Route = createFileRoute("/site7")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Your Neighborhood Practice" },
-      { name: "description", content: "Friendly, attentive primary care and GLP-1 virtual visits for your whole family." },
-      { property: "og:title", content: "Providence Care Plus" },
-      { property: "og:description", content: "Friendly primary care and GLP-1 virtual visits for everyday families." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Nunito+Sans:wght@400;500;600&display=swap" },
-    ],
-  }),
-  component: Site7,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const palette = {
   cream: "#FBF7F1",
@@ -32,7 +15,8 @@ const palette = {
 const serif = "'Lora', Georgia, serif";
 const sans = "'Nunito Sans', ui-sans-serif, system-ui, sans-serif";
 
-function Site7() {
+export default function Site7() {
+  useDocumentTitle("Providence Care Plus — Your Neighborhood Practice");
   const offset = useParallax(0.25);
   return (
     <div style={{ background: palette.cream, color: palette.ink, fontFamily: sans }}>

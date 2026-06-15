@@ -1,25 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import heroImg from "../assets/hero-site1.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
-
-export const Route = createFileRoute("/site1")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Concierge Primary Care" },
-      { name: "description", content: "Direct primary care and GLP-1 virtual appointments — designed around the rhythm of your life." },
-      { property: "og:title", content: "Providence Care Plus" },
-      { property: "og:description", content: "Direct primary care and GLP-1 virtual appointments." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&display=swap" },
-    ],
-  }),
-  component: Site1,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const palette = {
   bone: "#F6F1E9",
@@ -36,7 +19,8 @@ const sans = "'Inter', ui-sans-serif, system-ui, sans-serif";
 const grade =
   "linear-gradient(180deg, rgba(26,23,20,0.30) 0%, rgba(26,23,20,0.10) 38%, rgba(110,107,79,0.22) 100%)";
 
-function Site1() {
+export default function Site1() {
+  useDocumentTitle("Providence Care Plus — Concierge Primary Care");
   const offset = useParallax(0.3);
   return (
     <div style={{ background: palette.bone, color: palette.ink, fontFamily: sans }}>

@@ -1,20 +1,14 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { specGroups, type SpecEntry } from "../lib/specs";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Design Review" },
-      { name: "description", content: "Interactive site builds and visual design directions for Providence Care Plus." },
-    ],
-  }),
-  component: Index,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const ink = "#1a1c19";
 const accent = "#6b705c";
 
-function Index() {
+const logoUrl = `${import.meta.env.BASE_URL}deebuilt-logo.png`;
+
+export default function Index() {
+  useDocumentTitle("Providence Care Plus — Design Review");
   return (
     <div
       style={{
@@ -22,10 +16,29 @@ function Index() {
         background: "#fdfcfb",
         color: ink,
         fontFamily: "ui-sans-serif, system-ui, -apple-system, sans-serif",
-        padding: "10vh 6vw",
+        padding: "8vh 6vw 10vh",
       }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        {/* Centered DeeBuilt brand lockup — the brand's "home" moment. */}
+        <a
+          href="https://spec.deebuilt.co/"
+          aria-label="DeeBuilt — all directions"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textDecoration: "none",
+            color: ink,
+            marginBottom: "9vh",
+          }}
+        >
+          <img src={logoUrl} alt="" style={{ height: 88, width: "auto" }} />
+          <span style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 600, fontSize: 28, letterSpacing: "-0.01em", marginTop: 12 }}>
+            DeeBuilt
+          </span>
+        </a>
+
         <p style={{ fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: accent, margin: 0 }}>
           Client Review
         </p>

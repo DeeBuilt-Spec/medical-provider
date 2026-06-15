@@ -1,19 +1,15 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import heroImg from "../assets/hero-site5.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
 import { practice, services, howItWorks } from "../lib/practice";
 import { t5 } from "./site5-real";
 
-export const Route = createFileRoute("/site5-real/")({
-  component: Home,
-});
-
 const grade = "linear-gradient(180deg, rgba(46,42,38,0.10) 0%, rgba(85,126,120,0.10) 70%, rgba(46,42,38,0.18) 100%)";
 const photoFilter = "saturate(0.95) contrast(1.02)";
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: t5.tealDeep, margin: 0 };
 
-function Home() {
+export default function Home() {
   const offset = useParallax(0.22);
   return (
     <div>
@@ -58,7 +54,7 @@ function Home() {
                 <h3 style={{ fontFamily: t5.serif, fontSize: "clamp(22px, 2.4vw, 28px)", fontWeight: 600, margin: "0 0 12px", color: t5.tealDeep }}>{s.name}</h3>
                 <p style={{ fontSize: 16, lineHeight: 1.7, color: t5.ink, margin: "0 0 18px" }}>{s.short}</p>
                 <p style={{ fontSize: 13.5, color: t5.muted, margin: "0 0 18px" }}>{s.length} · {s.format} · {s.price}</p>
-                <Link to="/site5-real/services" hash={s.id} style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: t5.tealDeep, textDecoration: "none", borderBottom: `1px solid ${t5.tealDeep}`, paddingBottom: 3, fontWeight: 600 }}>
+                <Link to={`/site5-real/services#${s.id}`} style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: t5.tealDeep, textDecoration: "none", borderBottom: `1px solid ${t5.tealDeep}`, paddingBottom: 3, fontWeight: 600 }}>
                   Details
                 </Link>
               </div>

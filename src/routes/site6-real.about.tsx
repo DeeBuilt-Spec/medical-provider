@@ -1,17 +1,14 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import providerImg from "../assets/stethoscope.jpg";
 import { practice, faqs } from "../lib/practice";
 import { t6 } from "./site6-real";
-
-export const Route = createFileRoute("/site6-real/about")({
-  head: () => ({ meta: [{ title: "About — Providence Care Plus" }] }),
-  component: AboutPage,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 const grade = "linear-gradient(180deg, rgba(30,42,43,0.16) 0%, rgba(46,90,94,0.10) 65%, rgba(30,42,43,0.24) 100%)";
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 500, letterSpacing: "0.26em", textTransform: "uppercase", color: t6.teal, margin: 0 };
 
-function AboutPage() {
+export default function AboutPage() {
+  useDocumentTitle("About — Providence Care Plus");
   return (
     <div>
       {/* Provider */}

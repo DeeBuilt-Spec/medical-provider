@@ -1,25 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import heroImg from "../assets/hero-site3.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
-
-export const Route = createFileRoute("/site3")({
-  head: () => ({
-    meta: [
-      { title: "Providence Care Plus — Unrushed Care" },
-      { name: "description", content: "Unrushed direct primary care and GLP-1 metabolic support for the modern patient." },
-      { property: "og:title", content: "Providence Care Plus" },
-      { property: "og:description", content: "Unrushed direct primary care and GLP-1 metabolic support." },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" },
-    ],
-  }),
-  component: Site3,
-});
+import { useDocumentTitle } from "../lib/useDocumentTitle";
 
 // Ink + clay — warm paper, warm ink, a single muted terracotta accent.
 const palette = {
@@ -41,7 +24,8 @@ const grade =
   "linear-gradient(180deg, rgba(32,32,29,0.16) 0%, rgba(156,91,59,0.10) 60%, rgba(32,32,29,0.22) 100%)";
 const photoFilter = "saturate(0.9) contrast(1.03) sepia(0.08)";
 
-function Site3() {
+export default function Site3() {
+  useDocumentTitle("Providence Care Plus — Unrushed Care");
   const offset = useParallax(0.35);
   return (
     <div style={{ background: palette.bg, color: palette.ink, fontFamily: sans }}>

@@ -1,13 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import heroImg from "../assets/hero-site5.jpg";
 import providerImg from "../assets/stethoscope.jpg";
 import { useParallax } from "../lib/useParallax";
 import { practice, services, howItWorks } from "../lib/practice";
 import { t6 } from "./site6-real";
-
-export const Route = createFileRoute("/site6-real/")({
-  component: Home,
-});
 
 const grade = "linear-gradient(180deg, rgba(30,42,43,0.16) 0%, rgba(46,90,94,0.10) 65%, rgba(30,42,43,0.28) 100%)";
 // Hero-specific overlay: darkest at the left (behind the copy), fading clear to the right so the photo stays open.
@@ -15,7 +11,7 @@ const heroScrim = "linear-gradient(100deg, rgba(22,34,35,0.74) 0%, rgba(22,34,35
 const photoFilter = "saturate(0.92) contrast(1.02)";
 const eyebrow: React.CSSProperties = { fontSize: 11, fontWeight: 500, letterSpacing: "0.26em", textTransform: "uppercase", color: t6.teal, margin: 0 };
 
-function Home() {
+export default function Home() {
   const offset = useParallax(0.18);
   return (
     <div>
@@ -67,7 +63,7 @@ function Home() {
                 <p style={{ fontSize: 15.5, lineHeight: 1.7, color: t6.muted, margin: "0 0 20px" }}>{s.short}</p>
                 <p style={{ fontSize: 13, color: t6.ink, margin: "0 0 4px" }}>{s.length} · {s.format}</p>
                 <p style={{ fontSize: 13, color: t6.muted, margin: "0 0 20px" }}>{s.price}</p>
-                <Link to="/site6-real/services" hash={s.id} style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: t6.teal, textDecoration: "none", borderBottom: `1px solid ${t6.teal}`, paddingBottom: 3 }}>
+                <Link to={`/site6-real/services#${s.id}`} style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: t6.teal, textDecoration: "none", borderBottom: `1px solid ${t6.teal}`, paddingBottom: 3 }}>
                   Details
                 </Link>
               </div>
